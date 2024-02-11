@@ -1,0 +1,18 @@
+/*
+Hi there,
+
+Can you please give me an overview of sales for 2004?
+I would like to see a breakdown by product, country and city and please include the sales value, cost of sales and net profit.
+
+Thank you!
+*/
+
+SELECT T1.orderDate, T1.orderNumber, quantityOrdered, priceEach, productName, productLine, buyPrice, city, country 
+FROM orders T1
+INNER JOIN orderdetails t2
+ON T1.orderNumber = T2.orderNumber
+INNER JOIN products T3
+ON T2.productCode = T3.productCode
+INNER JOIN customers T4
+ON T1.customerNumber = T4.customerNumber
+WHERE year(orderDate) = 2004
